@@ -11,7 +11,6 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "TRANSACTION")
-
 public class Transaction {
 
     @Id
