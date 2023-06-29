@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -22,6 +23,7 @@ public class BankAccount {
     private double balance;
     private List<Transaction> transactions;
     private String accountNumber;
+    private Date date ;
 
 
     public Long getId() {
@@ -54,5 +56,13 @@ public class BankAccount {
 
     public void setAccountNumber(String accountNumber) {
         this.accountNumber = accountNumber;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 }
