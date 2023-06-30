@@ -6,12 +6,13 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor
+
 @Table(name = "BANKACCOUNT")
 public class BankAccount {
 
@@ -20,10 +21,30 @@ public class BankAccount {
     @Column(name = "BANKACCOUNT_ID")
     private Long id;
 
+    @Column(name = "BALANCE")
     private double balance;
-    private List<Transaction> transactions;
-    private String accountNumber;
+
+    @Column(name = "DATE")
     private Date date ;
+
+    @Column(name = "ACCOUNT")
+    private String account;
+
+
+
+    @OneToMany(mappedBy = "bankAccount", fetch = FetchType.LAZY)
+    private List<Transaction> transactions;
+
+
+    public BankAccount() {
+        this.balance = 0.0;
+        this.transactions = new ArrayList<>();
+    }
+
+
+    public void deposit(double amount) {
+        balance += amount;
+    }
 
 
     public Long getId() {
@@ -50,13 +71,6 @@ public class BankAccount {
         this.transactions = transactions;
     }
 
-    public String getAccountNumber() {
-        return accountNumber;
-    }
-
-    public void setAccountNumber(String accountNumber) {
-        this.accountNumber = accountNumber;
-    }
 
     public Date getDate() {
         return date;
@@ -64,5 +78,13 @@ public class BankAccount {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getAccount() {
+        return account;
+    }
+
+    public void setAccount(String account) {
+        this.account = account;
     }
 }

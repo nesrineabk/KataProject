@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 
 @Entity
@@ -18,11 +18,27 @@ public class Transaction {
     @Column(name = "TRANSACTION_ID")
     private Long id;
 
+    @Column(name = "DATE")
 
-    private Date date;
+    private LocalDate date;
+    @Column(name = "AMOUT")
+
     private double amount;
+    @Column(name = "BALANCE")
+
     private double balance;
+
+    @Column(name = "OPERATION")
+
     private String operation;
+
+
+    @OrderBy("id ASC")
+    @ManyToOne
+    @JoinColumn(name = "BANKACCOUNT_ID", nullable = true)
+    private BankAccount bankAccount;
+
+
 
     public Long getId() {
         return id;
@@ -32,11 +48,11 @@ public class Transaction {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 
@@ -62,5 +78,13 @@ public class Transaction {
 
     public void setOperation(String operation) {
         this.operation = operation;
+    }
+
+    public BankAccount getBankAccount() {
+        return bankAccount;
+    }
+
+    public void setBankAccount(BankAccount bankAccount) {
+        this.bankAccount = bankAccount;
     }
 }
