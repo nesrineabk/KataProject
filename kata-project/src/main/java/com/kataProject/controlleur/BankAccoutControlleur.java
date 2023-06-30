@@ -4,7 +4,6 @@ package com.kataProject.controlleur;
 import com.kataProject.model.BankAccount;
 import com.kataProject.services.BankAccountSerice;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

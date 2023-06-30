@@ -25,17 +25,7 @@ public class TransactionService implements ITransactionService  {
 
 
 
-    /*public List<Transaction> getTransactionHistory(String accountNumber) {
-        BankAccount account = transactionRepository.findByAccountNumber(accountNumber);
-        if (account == null) {
-            throw new IllegalArgumentException("Account not found");
-        }
 
-      //  return transactionRepository.getTransactionHistory();
-
-     //   return account.getTransactionHistory();
-
-    }*/
 
 
 
